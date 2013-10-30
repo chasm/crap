@@ -1,0 +1,9 @@
+h1 Persons
+
+table
+  - @persons.each do |p|
+    tr
+      td style="width: 80%" #{p.name}
+      td = link_to "Show", person_url(p)
+      td = link_to "Edit", edit_person_url(p)
+      td = link_to "Delete", person_url(p), method: :delete, confirm: "Are you sure?"
