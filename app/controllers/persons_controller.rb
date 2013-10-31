@@ -12,6 +12,7 @@ class PersonsController < ApplicationController
   # Form for adding a new person (in HTML)
   def new
     @person = Person.new
+    @personality_types = Person.personality_types
   end
   
   # POST to this to create a new person, then redirect to show

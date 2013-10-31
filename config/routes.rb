@@ -1,7 +1,11 @@
 Crap::Application.routes.draw do
-  root 'persons#index'
+  root 'site#index'
   
   resources :persons
+  
+  scope :api do
+    resources :animals, except: [ :new, :edit ], default: { format: :json }
+  end
   
   # get 'persons' => 'persons#index' # list all persons
   # get 'persons/new' => 'persons#new' # form to add a new person

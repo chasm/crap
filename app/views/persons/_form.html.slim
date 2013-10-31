@@ -4,12 +4,16 @@
     br
     = f.text_field :name
   p
+    = f.label :personality
+    br
+    = f.select :personality, @personality_types
+  p
     = f.label :age
     br
     = f.text_field :age
   p
     = f.label :is_a_clown
     br
-    = f.check_box :is_a_clown
+    = f.check_box :is_a_clown, {}, true, false
   p
     = f.submit

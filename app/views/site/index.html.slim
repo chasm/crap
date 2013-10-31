@@ -1,0 +1,42 @@
+p This is the site page
+
+ul#dumpster
+
+p
+  button Do it!
+
+javascript:
+  $(function() {
+    var loadAnimals = function() {
+      $.ajax({
+        url: "/api/animals",
+        method: "GET",
+        dataType: "json",
+        success: function(data) {
+          var d = $('#dumpster');
+          var len = data.length;
+        
+          for (var i = 0; i < len; i++) {
+            d.append('<li>' + data[i].name + '<button class="del" data-id="' + data[i].id + '">X</del></li>');
+          }
+        }
+      });
+    };
+    
+    var deleteAnimal = function() {
+      var id = $(this).data('id');
+      
+      $.ajax({
+        url: "/api/animals/" + id,
+        method: "DELETE",
+        contentType: "json",
+        success: function() {
+          $('#dumpster').empty();
+          loadAnimals();
+        }
+      });
+    };
+    
+    $('button').on('click', loadAnimals);
+    $('#dumpster').on('click', 'button', deleteAnimal);
+  });
