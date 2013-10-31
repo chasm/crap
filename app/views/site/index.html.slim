@@ -10,7 +10,7 @@ javascript:
     var loadAnimals = function() {
       $.ajax({
         url: "/api/animals",
-        method: "GET",
+        type: "GET",
         dataType: "json",
         success: function(data) {
           var d = $('#dumpster');
@@ -28,7 +28,7 @@ javascript:
       
       $.ajax({
         url: "/api/animals/" + id,
-        method: "DELETE",
+        type: "DELETE",
         contentType: "json",
         success: function() {
           $('#dumpster').empty();
